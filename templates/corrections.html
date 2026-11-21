@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MessMate - Correction Review</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7f5;
+            padding: 25px;
+            color: #26352e;
+        }
+
+        h1 {
+            color: #176b4d;
+            text-align: center;
+        }
+
+        .correction-card {
+            background: white;
+            padding: 20px;
+            margin: 15px auto;
+            max-width: 650px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+        }
+
+        .suggestion {
+            color: #176b4d;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📝 MessMate Correction Review</h1>
+
+    {% if corrections %}
+        {% for item in corrections %}
+            <div class="correction-card">
+                <h3>{{ item.meal | title }}</h3>
+
+                <p><strong>Current menu:</strong>
+                    {{ item.food }}</p>
+
+                <p class="suggestion">
+                    Suggested correction: {{ item.suggestion }}
+                </p>
+
+                <small>Submitted: {{ item.created_at }}</small>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p style="text-align:center;">
+            No correction suggestions submitted yet.
+        </p>
+    {% endif %}
+
+</body>
+</html>
